@@ -1,0 +1,42 @@
+#heading{
+    background-color: #393f4d;
+  }
+  table,th,td{
+    border: 1px solid #393f4d;
+    border-collapse: collapse;
+    font-family: sans-serif;
+  }
+  table{
+    /* background-color: red; */
+    margin: auto ;
+    padding: 50px;
+    text-align: center;
+    width: 85%;
+    margin-bottom: 60px;
+  }
+  th{
+    background-color: #393f4d;
+    color: white;
+    padding: 20px;
+  }
+  
+  td{
+    
+    padding: 20px;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #8a93a8;
+  }
+  
+  
+  h2{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 18px;
+    font-size: 38px;
+    color: #393f4d;
+    font-family: sans-serif;
+  
+  }
+  
