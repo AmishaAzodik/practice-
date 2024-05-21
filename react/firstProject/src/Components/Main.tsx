@@ -1,17 +1,35 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import axios from "axios"
+import { useCallback, useEffect, useState } from 'react'
 import "./Main.css" 
+
+type objUser = {
+    id:number;
+    name:string;
+    username:string;
+    address:never;
+    phone:number;
+    company:never;
+    email:string;
+}
+
 
 const Main = () => {
 
     const [user,setUser] = useState([]);
-useEffect(()=>{
 
-    axios.get("https://jsonplaceholder.typicode.com/Users")
-    .then((res)=>{setUser(res.data)
-        console.log(user)
-    })
-},[])
+    const fetchUser = useCallback(async()=>{
+        const response = await axios.get("https://jsonplaceholder.typicode.com/Users");
+        const responseData = await response.data;
+        setUser(responseData);
+    },[])
+    
+    
+useEffect(()=>{
+    
+        fetchUser();
+
+},[fetchUser])
+
 
 
 
@@ -20,7 +38,8 @@ useEffect(()=>{
 
         <h2>User Details</h2>
         <table id="table" >
-            <tr>
+            <tbody>
+            <tr >
                 <th >Id</th>
                 <th>Name</th>
                 <th>Username</th>
@@ -28,8 +47,8 @@ useEffect(()=>{
                 <th>Phone</th>
             </tr>
         
-        {user.map((u,i)=>(
-            <tr>
+        {user.map((u:objUser,i:number)=>(
+            <tr key={i}>
             <td >{u.id}</td>
             <td>{u.name}</td>
             <td>{u.username}</td>
@@ -41,7 +60,7 @@ useEffect(()=>{
     
 )}
 
-        
+        </tbody>
         </table>
     </div>
   )
