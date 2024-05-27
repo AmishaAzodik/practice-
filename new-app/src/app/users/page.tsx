@@ -1,11 +1,9 @@
-"use client";
-
+"use client"
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import "./page.css";
 import Nav from "@/Components/Nav";
 import Footer from "@/Components/Footer";
-
 
 type objUser = {
   id: number;
@@ -17,12 +15,12 @@ type objUser = {
   email: string;
 };
 
-const page = () => {
-  const [user, setUser] = useState([ ]);
+const Page = () => {
+  const [user, setUser] = useState<objUser[]>([]);
 
   const fetchUser = useCallback(async () => {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/Users"
+      "https://jsonplaceholder.typicode.com/users"
     );
     const responseData = await response.data;
     setUser(responseData);
@@ -34,8 +32,7 @@ const page = () => {
 
   return (
     <div>
-        <Nav/>
-        
+      <Nav />
       <h2>User Details</h2>
       <table id="table">
         <tbody>
@@ -58,9 +55,9 @@ const page = () => {
           ))}
         </tbody>
       </table>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
 
-export default page;
+export default Page;
